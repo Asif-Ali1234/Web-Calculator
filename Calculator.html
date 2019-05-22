@@ -1,0 +1,232 @@
+<html>
+  <head>
+    <title>Calculator</title>
+	<style type="text/css">
+	   .button{
+	width:50;
+	height:30;
+	margin:2px;
+	padding:2px;
+	color:blue;
+	border:none;
+	font-size:20px;
+	border-radius:40px;
+	background-color:white;
+	transition:0.3s;
+	}
+	#plus{
+	width:50;
+	height:50;
+	margin:2px;
+	padding:2px;
+	color:#413bf7;
+	font-size:30px;
+	border:none;
+	border-radius:50px;
+	cursor:pointer;
+	background-color:	#00ff80 ;
+	transition:0.3s
+	}
+	#minus{
+	width:50;
+	height:50;
+	margin:2px;
+	padding:2px;
+	color:#413bf7;
+	font-size:40px;
+	border:none;
+	border-radius:50px;
+	cursor:pointer;
+	text-align:center;
+	background-color:	#ffbf00 ;
+	transition:0.3s
+	}
+	#mul{
+	width:50;
+	height:50;
+	margin:2px;
+	padding:2px;
+	color:	#00ff00;
+	font-size:40px;
+	border:none;
+	border-radius:50px;
+	text-align:center;
+	cursor:pointer;
+	background-color:#bf00ff;
+	transition:0.3s
+	}
+	#div{
+	width:50;
+	height:50;
+	margin:2px;
+	padding:2px;
+	color:	#ff8000;
+	font-size:30px;
+	border:none;
+	border-radius:50px;
+	cursor:pointer;
+	background-color:	#00bfff;
+	transition:0.3s
+	}
+	#plus:hover{                                             
+	background-color:	#e0e0d1;
+	 color:	#00ff40;
+	 font-size:40px;
+	}
+	#minus:hover{                                             
+	background-color:	#e0e0d1;
+	 color:	#00ff40;
+	 font-size:50px;
+	}
+	#mul:hover{                                             
+	background-color:	#e0e0d1;
+	 color:	#00ff40;
+	 font-size:70px;
+	}
+	#div:hover{                                             
+	background-color:	#e0e0d1;
+	 color:	#00ff40;
+	 font-size:40px;
+	}
+	.cancelicon{
+		position:absolute;
+		top:27%;
+		left:78%;
+		transform:translate(-27%,78%);
+		border:none;
+	}
+	.cancelicon:hover{
+		border:1px solid 	rgb(0, 255, 64)
+	}
+	.button:hover
+	{
+		 border:none;
+		 background-color:#d963f9;
+		 font-size:25px;
+		 
+	}
+	.mainbutton
+	{
+	width:50;
+	height:40;
+	color:green;
+	border:none;
+	text-align:center;
+	background-color:#83ef17;
+	font-size:20px;
+	transition:0.3s;
+	cursor:pointer;
+	}
+	.mainbutton:hover
+	{
+		width:170;
+		background-color:#74f7ea;
+		font-size:30px
+	}		
+	#TextValue
+	{
+	width:225;
+	height:50;
+	border:none;
+	border-bottom:1px solid blue;
+	margin:0;
+	padding:0;
+	text-align:right;
+	color:orange;
+	font-size:20px;
+	}
+	#calci
+	{
+	margin:0;
+	padding:2px;
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+	border:1px solid red;
+	border-radius:5px;
+	}
+	#Heading{
+		font-family:Old english text mt;
+		font-size:30px;
+		color:orange;
+	}
+	</style>
+  </head>
+  <body onload="start()">
+    <script type="text/javascript">
+		   var a1,a2,res,i,j,k,m,n,chin=""	
+			var input = document.getElementById("TextValue");
+		   function start()
+		   {
+			  var but=document.getElementById('TextValue').value=0;
+			  i=0,a1="",res=0,a2=0,j=0,m=0,n=0;
+		   } 
+		  function display(a)
+		  {
+			 if(document.getElementById('TextValue').value==0){
+				document.getElementById('TextValue').value=a;
+				var obj1=document.getElementById('TextValue').style.border="1px solid blue";
+			 }
+			else{
+			chin=document.getElementById('TextValue').value+=a;
+			var obj1=document.getElementById('TextValue').style.border="1px solid blue";
+		   }
+		  }
+		  function remove()
+		  { 
+			if(chin.length==1)
+			{
+			  start();
+			}
+			else{
+			chin=chin.slice(0,-1);
+			document.getElementById('TextValue').value=chin;
+			}
+		  }
+		  function textdec()
+		  {
+			 var obj=document.getElementById('TextValue').style.border="1px solid blue";
+			 var obj=document.getElementById('TextValue').value=null;
+		  }
+	  function operation()
+	  {
+		 var str=document.getElementById('TextValue').value;
+		 var ch=eval(str);
+		 var cn=document.getElementById('TextValue').value=ch;
+	  }	 
+	</script>
+	<div id="calci">
+	   <p id="Heading" align="center">My Calculator</p>
+       <form method="get" action="">
+            <table cellspacing=5 cellpadding=5>
+			<tr><td>
+			<input type="text" pattern="^[0-9]*$" id="TextValue"  onmousedown="textdec();"size="20"/></td></tr>
+			<tr><td>
+			<input type="button" id="b1" class="button"  onclick="display(1)" value="1"/>
+			<input type="button" id="b2" class="button"  onclick="display(2)" value="2"/>
+			<input type="button" id="b3" class="button"  onclick="display(3)" value="3"/>
+			<img  id="cancel" class="cancelicon"src="icons8-cancel-last-digit-100.png" width=40 height=40 onclick="remove()"/></td></tr>
+			<tr><td>
+			<input type="button" id="b4"   class="button"    onclick="display(4)" value="4"/>
+			<input type="button" id="b5"   class="button"    onclick="display(5)" value="5"/>
+            <input type="button" id="b6"   class="button"    onclick="display(6)" value="6"/>
+			<input type="button" id="plus" class="obutton"   onclick="display('+')" value="+"/></td></tr>
+			<tr><td>
+			<input type="button" id="b7"    class="button"  onclick="display(7)" value="7"/>
+			<input type="button" id="b8"    class="button"  onclick="display(8)" value="8"/>
+			<input type="button" id="b9"    class="button"  onclick="display(9)" value="9"/>
+			<input type="button" id="minus" class="obutton" onclick="display('-')" value="-"/></td></tr>
+			<tr><td>
+			<input type="button" id="b10" class="button"  onclick="display(0)" value="0"/>
+			<input type="button" id="."   class="button"  onclick="display('.')" value="."/>
+			<input type="button" id="c"   class="button"  onclick="start()" value="C"/>
+			<input type="button" id="mul" class="obutton" onclick="display('*')" value="*"/></td></tr>
+			<tr><td>
+			<input type="button" id="result"   class="mainbutton" onclick="operation()" value="="/>
+			<input type="button" id="div" class="obutton"    onclick="display('/')" value="/"/></td></tr>
+	    </table>
+	   </form>	   
+	</div>
+  </body>
+</html>  
